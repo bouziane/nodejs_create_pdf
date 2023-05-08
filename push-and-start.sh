@@ -1,0 +1,2 @@
+source ".env_shell"
+rsync -avz --exclude 'node_modules/' $LOCAL_PATH/* $REMOTE_USER@$REMOTE_HOST:$REMOTE_PATH/ && ssh -p "$SSH_PORT" $REMOTE_USER@$REMOTE_HOST "sudo kill -9 \$(sudo lsof -t -i:3000)||true && cd $REMOTE_PATH && npm start"
